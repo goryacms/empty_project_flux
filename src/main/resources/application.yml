@@ -10,6 +10,7 @@ spring:
     platform: h2
     sql-script-encoding: UTF-8
     initialization-mode: always
+#    maximum-pool-size: 15
 
     # enable H2 web console and set url for web console
     # http://localhost:8888/console
