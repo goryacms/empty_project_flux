@@ -1,7 +1,9 @@
 # empty_project_flux
 Spring 5 Web Flux
 
+docker-compose up
 
+docker-machine ip default
 
 
 # Getting Started
