@@ -1,21 +1,23 @@
 server:
   port: 8888
 
-spring:
-  datasource:
+#spring:
+#  r2dbc:
+#    url: r2dbc:postgresql://http://192.168.99.100:5432/webflux
+#  datasource:
 #    url: jdbc:postgresql://http://192.168.99.100:5432/webflux
 #    username: postgres
 #    password: goryacms
 #    platform: postgres
-#    driver-class-name: org.postgresql.Driver
-    sql-script-encoding: UTF-8
-    initialization-mode: always
+#    driver-class-name: io.r2dbc.postgresql
+#    sql-script-encoding: UTF-8
+#    initialization-mode: always
 #    maximum-pool-size: 15
 
-  jpa:
-    hibernate:
-      ddl-auto: validate
-    show-sql: true
-    properties:
-      hibernate.format_sql: true
-      hibernate.jdbc.lob.non_contextual_creation: true #fix hibernate not correctly handling available features
+#  jpa:
+#    hibernate:
+#      ddl-auto: validate
+#    show-sql: true
+#    properties:
+#      hibernate.format_sql: true
+#      hibernate.jdbc.lob.non_contextual_creation: true #fix hibernate not correctly handling available features

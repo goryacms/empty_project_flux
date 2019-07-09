@@ -13,13 +13,14 @@ import ru.goryacms.user.repository.UserRepository;
 
 @Configuration
 @EnableR2dbcRepositories
-public class DatabaseConfig {
+public class DatabaseConfig /*extends AbstractR2dbcConfiguration*/ {
     @Bean
-    PostgresqlConnectionFactory connectionFactory() {
+    public ConnectionFactory connectionFactory() {
         return new PostgresqlConnectionFactory(
                 PostgresqlConnectionConfiguration.builder()
                         .host("192.168.99.100")
                         .port(5432)
+                        .schema("public")
                         .database("webflux")
                         .username("postgres")
                         .password("goryacms")
@@ -28,9 +29,9 @@ public class DatabaseConfig {
     }
 
     @Bean
-    DatabaseClient databaseClient(ConnectionFactory connectionFactory) {
+    DatabaseClient databaseClient() {
         return DatabaseClient.builder()
-                .connectionFactory(connectionFactory)
+                .connectionFactory(this.connectionFactory())
                 .build();
     }
 
@@ -42,8 +43,9 @@ public class DatabaseConfig {
     }
 
     @Bean
-    UserRepository myRepository(R2dbcRepositoryFactory factory){
+    UserRepository userRepository(R2dbcRepositoryFactory factory) {
         return factory.getRepository(UserRepository.class);
     }
 
 }
+

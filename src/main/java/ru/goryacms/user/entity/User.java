@@ -1,54 +1,57 @@
 package ru.goryacms.user.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import javax.persistence.*;
+//import javax.persistence.*;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Version;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 import java.util.Date;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
-@Entity
-@Table(name = "Users")
+//@Entity
+@Table(value = "\"Users\"")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(keyColumn = "id")
     private Long id;
 
     @Version
     private Integer version;
 
-    @Basic(optional = false)
-    @Column(name = "first_name")
+    @Column(keyColumn = "first_name")
     private String firstName;
 
-    @Basic(optional = false)
-    @Column(name = "last_name")
+    @Column(keyColumn = "last_name")
     private String lastName;
 
-    @Column(name = "middle_name")
+    @Column(keyColumn = "middle_name")
     private String middleName;
 
-    @Column(name = "position")
-    private String position;
-
-    @Column(name = "phone")
-    private String phone;
-
-    @Basic(optional = false)
-    @Column(name = "age")
-    private Integer age;
-
-    @Basic(optional = false)
-    @Column(name = "is_identified")
-    private Boolean isIdentified;
-
-    @Column(name = "registration_date")
-    @Temporal(TemporalType.DATE)
-    private Date registrationDate;
-
-    @Basic(optional = false)
-    @Column(name = "salary")
-    private Double salary;
+//    @Column(keyColumn = "position")
+//    private String position;
+//
+//    @Column(keyColumn = "phone")
+//    private String phone;
+//
+//    @Column(keyColumn = "age")
+//    private Integer age;
+//
+//    @Column(keyColumn = "is_identified")
+//    private Boolean isIdentified;
+//
+//    @Column(keyColumn = "registration_date")
+//    //@Temporal(TemporalType.DATE)
+//    private Date registrationDate;
+//
+//    @Column(keyColumn = "salary")
+//    private Double salary;
 
 //    @OneToOne(fetch = FetchType.LAZY, mappedBy = "user",
 //            cascade=CascadeType.ALL, orphanRemoval=true)

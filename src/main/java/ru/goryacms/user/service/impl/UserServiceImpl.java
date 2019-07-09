@@ -26,7 +26,10 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public Flux<UserDto> findAll() {
-        return userRepository.findAll()
+        System.out.println("Service!!!!!!!!!!");
+        Flux<User> all = userRepository.findAll();
+        System.out.println("====================== " + all.toString());
+        return all
                 .map(
                         it -> modelMapper.map(it, UserDto.class)
                 );
