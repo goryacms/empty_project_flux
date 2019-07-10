@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS Registers (
-    id 				 serial NOT NULL,
+    id 				 serial NOT NULL PRIMARY KEY,
     version          INTEGER NOT NULL,
     login            VARCHAR(12) NOT NULL,
     password         VARCHAR(100) NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS Registers (
 
 -------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS Organization (
-    id 				 serial NOT NULL,
+    id 				 serial NOT NULL PRIMARY KEY,
     version          INTEGER NOT NULL,
     name             VARCHAR(75) ,
     full_name        VARCHAR(200) ,
@@ -29,7 +29,7 @@ CREATE INDEX IX_Organization_List1 ON Organization (name, inn, is_active);
 -- Organization - Office: 1:М
 
 CREATE TABLE IF NOT EXISTS Office (
-    id 				 serial NOT NULL,
+    id 				 serial NOT NULL PRIMARY KEY,
     version          INTEGER NOT NULL,
     organization_id  serial,
     name             VARCHAR(75) NOT NULL,
@@ -47,7 +47,7 @@ ALTER TABLE Office ADD FOREIGN KEY (organization_id) REFERENCES Organization(id)
 -- Office - User: 1:М
 
 CREATE TABLE IF NOT EXISTS Users (
-    id 				 serial NOT NULL,
+    id 				 serial NOT NULL PRIMARY KEY,
     version         INTEGER NOT NULL,
     office_id       BIGINT,
     first_name      VARCHAR(50) NOT NULL,
@@ -78,7 +78,7 @@ ALTER TABLE Users ADD FOREIGN KEY (office_id) REFERENCES Office(id);
 -- User - Docs: M:M
 
 CREATE TABLE IF NOT EXISTS Docs (
-    code 				 serial NOT NULL,
+    code 				 serial NOT NULL PRIMARY KEY,
     version         INTEGER NOT NULL,
     name            VARCHAR(100) NOT NULL
 );
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS Docs (
 -- Для связи User и Docs
 
 CREATE TABLE IF NOT EXISTS Docs_Users (
-    id 				 serial NOT NULL,
+    id 				 serial NOT NULL PRIMARY KEY,
     version         INTEGER NOT NULL,
     user_id        BIGINT,   /*FK - user*/
     doc_code       INTEGER,   /*FK - docs*/
@@ -106,7 +106,7 @@ ALTER TABLE Docs_Users ADD FOREIGN KEY (doc_code) REFERENCES Docs(code);
 -- Гражданство
 
 CREATE TABLE IF NOT EXISTS Citizenship (
-    code 				 serial NOT NULL,
+    code 				 serial NOT NULL PRIMARY KEY,
     version             INTEGER NOT NULL,
     name                VARCHAR(100) NOT NULL
 );
