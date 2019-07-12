@@ -11,6 +11,8 @@ public interface UserService {
 
     Mono<UserDto> loadById(Long id);
 
+    Flux<UserDto> findByOfficeId(Long officeId);
+
     Mono<UserDto> save(UserDto user);
 
     Mono<UserDto> update(UserDto user);

@@ -37,6 +37,4 @@ public class Office {
 
 //    private Organization organization;
 
-    private List<User> users;
-
 }
