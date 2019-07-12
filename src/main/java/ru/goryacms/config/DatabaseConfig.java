@@ -9,6 +9,7 @@ import org.springframework.data.r2dbc.function.DatabaseClient;
 import org.springframework.data.r2dbc.repository.config.EnableR2dbcRepositories;
 import org.springframework.data.r2dbc.repository.support.R2dbcRepositoryFactory;
 import org.springframework.data.relational.core.mapping.RelationalMappingContext;
+import ru.goryacms.office.repository.OfficeRepository;
 import ru.goryacms.user.repository.UserRepository;
 
 @Configuration
@@ -45,6 +46,11 @@ public class DatabaseConfig /*extends AbstractR2dbcConfiguration*/ {
     @Bean
     UserRepository userRepository(R2dbcRepositoryFactory factory) {
         return factory.getRepository(UserRepository.class);
+    }
+
+    @Bean
+    OfficeRepository officeRepository(R2dbcRepositoryFactory factory) {
+        return factory.getRepository(OfficeRepository.class);
     }
 
 }

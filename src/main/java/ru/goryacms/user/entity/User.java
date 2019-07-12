@@ -2,23 +2,21 @@ package ru.goryacms.user.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
-//import javax.persistence.*;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
+import ru.goryacms.office.entity.Office;
+
 import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-//@Entity
-@Table(value = "\"Users\"")
+@Table(value = "Users")
 public class User {
     @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
     @Column(keyColumn = "id")
     private Long id;
 
@@ -34,36 +32,28 @@ public class User {
     @Column(keyColumn = "middle_name")
     private String middleName;
 
-//    @Column(keyColumn = "position")
-//    private String position;
-//
-//    @Column(keyColumn = "phone")
-//    private String phone;
-//
-//    @Column(keyColumn = "age")
-//    private Integer age;
-//
-//    @Column(keyColumn = "is_identified")
-//    private Boolean isIdentified;
-//
-//    @Column(keyColumn = "registration_date")
-//    //@Temporal(TemporalType.DATE)
-//    private Date registrationDate;
-//
-//    @Column(keyColumn = "salary")
-//    private Double salary;
+    @Column(keyColumn = "position")
+    private String position;
 
-//    @OneToOne(fetch = FetchType.LAZY, mappedBy = "user",
-//            cascade=CascadeType.ALL, orphanRemoval=true)
+    @Column(keyColumn = "phone")
+    private String phone;
+
+    @Column(keyColumn = "age")
+    private Integer age;
+
+    @Column(keyColumn = "is_identified")
+    private Boolean isIdentified;
+
+    @Column(keyColumn = "registration_date")
+    private Date registrationDate;
+
+    @Column(keyColumn = "salary")
+    private Double salary;
+
 //    private DocUser docUser;
-//
-//
-//
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "office_id")
-//    private Office office;
-//
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "citizenship_code")
+
+    @Column(keyColumn = "office_id")
+    private Long officeId;
+
 //    private Citizenship citizenship;
 }

@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import ru.goryacms.user.dto.UserDto;
 import ru.goryacms.user.entity.User;
 import ru.goryacms.user.repository.UserRepository;
@@ -24,11 +25,8 @@ public class UserServiceImpl implements UserService {
 
     //@Mapper(uses = UserDto.class)
     @Override
-    @Transactional
     public Flux<UserDto> findAll() {
-        System.out.println("Service!!!!!!!!!!");
         Flux<User> all = userRepository.findAll();
-        System.out.println("====================== " + all.toString());
         return all
                 .map(
                         it -> modelMapper.map(it, UserDto.class)
@@ -36,27 +34,24 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDto> loadByParams(UserDto user) {
+    public Mono<UserDto> loadById(Long id) {
         return null;
     }
 
     @Override
-    public UserDto loadById(Long id) {
+    public Mono<UserDto> save(UserDto user) {
         return null;
     }
 
     @Override
-    public UserDto save(UserDto user) {
+    public Mono<UserDto> update(UserDto user) {
         return null;
     }
 
     @Override
-    public UserDto update(UserDto user) {
+    public Mono<UserDto> delete(UserDto user) {
         return null;
     }
 
-    @Override
-    public UserDto delete(UserDto user) {
-        return null;
-    }
+
 }
